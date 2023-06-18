@@ -1,0 +1,144 @@
+/* .user-profile-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 5%;
+  }
+  
+  .head {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .user-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  
+  .image-upload input {
+    display: "";
+  }
+  
+  .subheading {
+    font-size: 20px;
+    margin-top: 20px;
+  }
+  
+  .details {
+    margin-bottom: 10px;
+  }
+  
+  .event-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+  }
+  
+  .event-table th,
+  .event-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .event-table th {
+    font-weight: bold;
+  }
+   */
+   .user-profile-container {
+    max-width: 500px;
+    margin: 2.4% auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    /* box-shadow:;
+     */
+     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .head {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .user-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  
+  .user-image-placeholder {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin-bottom: 10px;
+  }
+  
+  .image-upload {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .image-upload input {
+    display: none;
+  }
+  
+  .edit-icon {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: white;
+    border-radius: 50%;
+    padding: 4px;
+    /* height:50px; */
+    cursor: pointer;
+  }
+  
+  .subheading {
+    font-size: 20px;
+    margin-top: 20px;
+  }
+  
+  .details {
+    margin-bottom: 10px;
+  }
+  
+  .event-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+  }
+  
+  .event-table th,
+  .event-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .event-table th {
+    font-weight: bold;
+  }
+  
+  .save-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .save-button:hover {
+    background-color: #0056b3;
+  }
+  
