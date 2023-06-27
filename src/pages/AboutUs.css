@@ -1,0 +1,15 @@
+
+.hi{
+  display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+background-color: #010101;
+height: 1000px;
+color: antiquewhite;
+}
+.des{
+width:550px;
+font-size: 21px;
+color: antiquewhite;
+}
