@@ -1,0 +1,94 @@
+.event-box {
+    display: inline-block;
+    margin: 28px;
+    padding: 10px;
+    width: 400px;
+    height: 450px;
+    border: 10px solid #045b77;
+    border-radius: 4px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .event-poster {
+    width: 300px;
+    height: 180px;
+    margin-bottom: 10px;
+    margin-left: 50px;
+    border-radius: 4px;
+    animation: posterAnimation 4s infinite;
+  }
+  
+  .event-title {
+    text-align: center;
+    font-size: 30px;
+    margin-top: 5px;
+  }
+  
+  .event-description {
+    text-align: center;
+    font-size: 20px;
+  }
+  
+  .event-countdown {
+    text-align: center;
+    font-size: 20px;
+    font-family: "Courier New", Courier, monospace;
+    letter-spacing: 2px;
+    margin-top: 20px;
+    font-weight: bolder;
+  }
+  
+  @keyframes posterAnimation {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .register-button,
+  .info-button {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .register-button {
+    background-color: #045b77;
+    color: white;
+  }
+  
+  .register-button:hover {
+    background-color: #023c55;
+  }
+  
+  .info-button {
+    background-color: #045b77;
+    color: white;
+  }
+  
+  .info-button:hover {
+    background-color: #023c55;
+  }
+  

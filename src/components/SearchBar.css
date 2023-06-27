@@ -1,0 +1,38 @@
+/* CSS */
+.search-bar-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    align-items: center;
+  }
+  
+  .search-bar-form {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+   
+    align-items: center;
+  }
+  
+  .search-bar-input {
+    width: 90%;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #8eb6c2;
+    border: 3px solid #070606;
+  }
+  
+  .search-bar-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #0b0c0b;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .search-bar-button:hover {
+    background-color: #545654;
+  }
+  
