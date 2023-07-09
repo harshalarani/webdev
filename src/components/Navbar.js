@@ -18,7 +18,7 @@ const Navbar = () => {
         <li><Link to="/events">Events</Link></li>
        
         <li><Link to="./about">AboutUs</Link></li>
-        <li><Link to="/profile">Profile</Link></li>
+        <li><Link to="/login">Profile</Link></li>
       </ul>
       
     </nav>

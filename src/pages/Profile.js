@@ -1,389 +1,71 @@
-// import React, { useState } from 'react';
-// import './Profile.css';
-
-// const Profile = () => {
-//   // Dummy data
-//   const username = 'John Doe';
-//   const semester = '3rd';
-//   const branch = 'Computer Science';
-
-//   const events = [
-//     {
-//       sno: 1,
-//       eventName: 'Event A',
-//       date: '2023-06-15',
-//       activityPoints: 5
-//     },
-//     {
-//       sno: 2,
-//       eventName: 'Event B',
-//       date: '2023-06-17',
-//       activityPoints: 10
-//     }
-//   ];
-
-//   // State for user image upload
-//   const [image, setImage] = useState('images/event1.jpeg');
-//   const [uploadedImage, setUploadedImage] = useState(null);
-
-//   // Function to handle image upload
-//   const handleImageUpload = (event) => {
-//     const file = event.target.files[0];
-//     const reader = new FileReader();
-
-//     reader.onloadend = () => {
-//       setImage(reader.result);
-//       setUploadedImage(reader.result);
-//     };
-
-//     if (file) {
-//       reader.readAsDataURL(file);
-//     }
-//   };
-
-//   // Function to save changes
-//   const saveChanges = () => {
-//     if (uploadedImage) {
-//       // Here, you can implement the logic to save the uploaded image
-//       // to the server or update the user's profile with the new image
-//       // For this example, we are simply updating the state to reflect the change
-//       setImage(uploadedImage);
-//       setUploadedImage(null);
-//     }
-//   };
-
-//   return (
-//     <div className="user-profile-container">
-//       <h1 className="head">User Profile</h1>
-//       <div className="image-upload">
-//         <img
-//           src={image}
-//           alt="User"
-//           className="user-image"
-//         />
-//         <br/>
-//         <input
-//           type="file"
-//           accept="image/*"
-//           onChange={handleImageUpload}
-//         />
-//       </div>
-//       <div className="user-details">
-//         <h2 className="subheading">Username: {username}</h2>
-//         <p className="details">Semester: {semester}</p>
-//         <p className="details">Branch: {branch}</p>
-//       </div>
-//       <h2 className="subheading">Participated Events</h2>
-//       <table className="event-table">
-//         <thead>
-//           <tr>
-//             <th>S.No</th>
-//             <th>Event Name</th>
-//             <th>Date</th>
-//             <th>Activity Points</th>
-//           </tr>
-//         </thead>
-//         <tbody>
-//           {events.map(event => (
-//             <tr key={event.sno}>
-//               <td>{event.sno}</td>
-//               <td>{event.eventName}</td>
-//               <td>{event.date}</td>
-//               <td>{event.activityPoints}</td>
-//             </tr>
-//           ))}
-//         </tbody>
-//       </table>
-//       {uploadedImage && (
-//         <button className="save-button" onClick={saveChanges}>
-//           Save Changes
-//         </button>
-//       )}
-//     </div>
-//   );
-// }
-
-// export default Profile;
-
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// // import {useNavigate} from 'react-router-dom';
-// import {faPaintBrush } from "@fortawesome/free-solid-svg-icons";
-// import React, { useState } from 'react';
-// import { FaPencilAlt } from 'react-icons/fa';
-// import './Profile.css';
-
-
-// const Profile = () => {
-//   // Dummy data
-//   const username = 'John Doe';
-//   const semester = '3rd';
-//   const branch = 'Computer Science';
-
-//   const events = [
-//     {
-//       sno: 1,
-//       eventName: 'Event A',
-//       date: '2023-06-15',
-//       activityPoints: 5
-//     },
-//     {
-//       sno: 2,
-//       eventName: 'Event B',
-//       date: '2023-06-17',
-//       activityPoints: 10
-//     }
-//   ];
-
-//   // State for user image upload
-//   const [image, setImage] = useState(null);
-//   const [uploadedImage, setUploadedImage] = useState(null);
-//   const [showSaveButton, setShowSaveButton] = useState(false);
-
-//   // Function to handle image upload
-//   const handleImageUpload = (event) => {
-//     const file = event.target.files[0];
-//     const reader = new FileReader();
-
-//     reader.onloadend = () => {
-//       setImage(reader.result);
-//       setUploadedImage(reader.result);
-//       setShowSaveButton(true);
-//     };
-
-//     if (file) {
-//       reader.readAsDataURL(file);
-//     }
-//   };
-
-//   // Function to save changes
-//   const saveChanges = () => {
-//     if (uploadedImage) {
-//       // Here, you can implement the logic to save the uploaded image
-//       // to the server or update the user's profile with the new image
-//       // For this example, we are simply updating the state to reflect the change
-//       setImage(uploadedImage);
-//       setUploadedImage(null);
-//       setShowSaveButton(false);
-//     }
-//   };
-
-//   return (
-//     <div className="user-profile-container">
-//       <h1 className="head">User Profile</h1>
-//       <div className="image-upload">
-//         {image ? (
-//           <>
-//             <img src={image} alt="User" className="user-image" />
-//             <label htmlFor="upload-input">
-//               {/* <FaPencilAlt className="edit-icon" />
-//                */}
-//                <br/>
-//             <FontAwesomeIcon icon={faPaintBrush}/>
-
-
-
-//             </label>
-//           </>
-//         ) : (
-//           <label htmlFor="upload-input">
-//             <div className="user-image-placeholder" />
-//             <br/>
-//             {/* <FaPencilAlt className="edit-icon" /> */}
-//             <FontAwesomeIcon icon={faPaintBrush}/>
-//           </label>
-//         )}
-//         <input
-//           id="upload-input"
-//           type="file"
-//           accept="image/*"
-//           onChange={handleImageUpload}
-//         />
-//       </div>
-//       <div className="user-details">
-//         <h2 className="subheading">Username: {username}</h2>
-//         <p className="details">Semester: {semester}</p>
-//         <p className="details">Branch: {branch}</p>
-//       </div>
-//       <h2 className="subheading">Participated Events</h2>
-//       <table className="event-table">
-//         <thead>
-//           <tr>
-//             <th>S.No</th>
-//             <th>Event Name</th>
-//             <th>Date</th>
-//             <th>Activity Points</th>
-//           </tr>
-//         </thead>
-//         <tbody>
-//           {events.map(event => (
-//             <tr key={event.sno}>
-//               <td>{event.sno}</td>
-//               <td>{event.eventName}</td>
-//               <td>{event.date}</td>
-//               <td>{event.activityPoints}</td>
-//             </tr>
-//           ))}
-//         </tbody>
-//       </table>
-//       {showSaveButton && (
-//         <button className="save-button" onClick={saveChanges}>
-//           Save Changes
-//         </button>
-//       )}
-//     </div>
-//   );
-// }
-
-// export default Profile;
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPaintBrush } from "@fortawesome/free-solid-svg-icons";
-import React, { useState } from 'react';
+import React from 'react';
 import './profile.css';
+// import 'Photo'
+import kanjika from './Photo_meri copy.jpeg'
 
 const Profile = () => {
-  // Dummy data
-  const username = 'John Doe';
-  const semester = '3rd';
-  const branch = 'Computer Science';
-
-  const events = [
-    {
-      sno: 1,
-      eventName: 'Event A',
-      date: '2023-06-15',
-      activityPoints: 5
-    },
-    {
-      sno: 2,
-      eventName: 'Event B',
-      date: '2023-06-17',
-      activityPoints: 10
-    }
-  ];
-
-  // State for user image upload
-  const [image, setImage] = useState(null);
-  const [uploadedImage, setUploadedImage] = useState(null);
-  const [showSaveButton, setShowSaveButton] = useState(false);
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-
-  // Function to handle image upload
-  const handleImageUpload = (event) => {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-
-    reader.onloadend = () => {
-      setImage(reader.result);
-      setUploadedImage(reader.result);
-      setShowSaveButton(true);
-    };
-
-    if (file) {
-      reader.readAsDataURL(file);
-    }
-  };
-
-  // Function to save changes
-  const saveChanges = () => {
-    if (uploadedImage) {
-      // Here, you can implement the logic to save the uploaded image
-      // to the server or update the user's profile with the new image
-      // For this example, we are simply updating the state to reflect the change
-      setImage(uploadedImage);
-      setUploadedImage(null);
-      setShowSaveButton(false);
-    }
-  };
-
-  const handleChangePassword = () => {
-    if (password !== confirmPassword) {
-      // Add logic to handle password mismatch
-      return;
-    }
-
-    // Add logic to handle password change
-    console.log('Password changed successfully');
-  };
-
-  return (
-    <div className="user-profile-container">
-      <h1 className="head">User Profile</h1>
-      <div className="image-upload">
-        {image ? (
-          <>
-            <img src={image} alt="User" className="user-image" />
-            <label htmlFor="upload-input">
-              <FontAwesomeIcon icon={faPaintBrush}/>
-            </label>
-          </>
-        ) : (
-          <label htmlFor="upload-input">
-            <div className="user-image-placeholder" />
-            <FontAwesomeIcon icon={faPaintBrush}/>
-          </label>
-        )}
-        <input
-          id="upload-input"
-          type="file"
-          accept="image/*"
-          onChange={handleImageUpload}
-        />
-      </div>
-      <div className="user-details">
-        <h2 className="subheading">Username: {username}</h2>
-        <p className="details">Semester: {semester}</p>
-        <p className="details">Branch: {branch}</p>
-      </div>
-      <div className="password-container">
-        <h2 className="subheading">Change Password</h2>
-        <input
-          type="password"
-          placeholder="New Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <br/>
-
-        <input
-          type="password"
-          placeholder="Confirm Password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-        />
-        <br/>
-        <button className="change-password-button" onClick={handleChangePassword}>
-          Change Password
-        </button>
-      </div>
-      <h2 className="subheading">Participated Events</h2>
-      <table className="event-table">
-        <thead>
-          <tr>
-            <th>S.No</th>
-            <th>Event Name</th>
-            <th>Date</th>
-            <th>Activity Points</th>
-          </tr>
-        </thead>
-        <tbody>
-          {events.map(event => (
-            <tr key={event.sno}>
-              <td>{event.sno}</td>
-              <td>{event.eventName}</td>
-              <td>{event.date}</td>
-              <td>{event.activityPoints}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      {showSaveButton && (
-        <button className="save-button" onClick={saveChanges}>
-          Save Changes
-        </button>
-      )}
-    </div>
-  );
+  function table_event(){
+    window.location.href = 'event_list'
+  }
+const change_pass = () =>{
+  window.location.href = 'password_change'
 }
 
+  return(<div class="p-16 bg-slate-900" >
+  <div class="p-8 bg-black mt-24">
+    <div class="grid grid-cols-1 md:grid-cols-3">
+      <div class="grid grid-cols-3 text-center order-last md:order-first mt-20 md:mt-0">
+        <div>
+          <p class="font-bold text-white text-xl">22</p>
+          <p class="text-white">Events Participated</p>
+        </div>
+        <div>
+             <p class="font-bold text-white text-xl">10</p>
+          <p class="text-white">Events won</p>
+        </div>
+            <div>
+             <p class="font-bold text-white text-xl">89</p>
+          <p class="text-white">Activity Points</p>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="w-48 h-48 bg-indigo-100 mx-auto rounded-full shadow-2xl absolute inset-x-0 top-0 -mt-24 flex items-center justify-center text-indigo-500">
+  {/* <svg xmlns="" class="h-24 w-24" viewBox="0 0 20 20" fill="currentColor"> */}
+  
+    {/* <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+  </svg> */}
+<img src={kanjika} class="h-24 w-24" />
+        </div>
+      </div>
+  
+      <div class="space-x-8 flex justify-between mt-32 md:mt-0 md:justify-center">
+  
+      <button
+    class="text-white py-2 px-4 uppercase rounded bg-gray-700 hover:bg-gray-800 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5" onClick={table_event}
+  >
+   Upcoming events
+  </button>
+      </div>
+    </div>
+  
+    <div class="mt-20 text-center border-b pb-12">
+      <h1 class="text-4xl font-medium text-white">Kanjika Singh<span class="font-light text-gray-500"></span></h1>
+      <p class="font-light text-white mt-3">Fourth Sem</p>
+      <p class="mt-8 text-white">1BM21CS086</p>
+      <p class="mt-2 text-white">Department of Computer Science</p>
+    </div>
+  
+    <div class="mt-12 flex flex-col justify-center">
+      {/* <p class="text-gray-600 text-center font-light lg:px-16"></p> */}
+      <button
+    class="text-indigo-500 py-2 px-4  font-medium mt-4" onclick={change_pass}
+  >
+    change password
+  </button>
+    </div>
+  
+  </div>
+  </div>)
+}
 export default Profile;
+

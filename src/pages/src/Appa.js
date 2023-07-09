@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     justifyContent: "center",
     textAlign: "center",
-    backgroundColor: "#242b55",
+    backgroundColor: "#121212",
     [theme.breakpoints.down("sm")]: {
       flexGrow: 1
     }
@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(1)
   },
   subtitle: {
-    color: theme.palette.primary.light
+    color: theme.palette.primary.contrastText,
   },
   toolbar: {
     justifyContent: "center"
@@ -44,7 +44,7 @@ function Appa() {
       <Grid container className={classes.root}>
         <Grid item className={classes.header} xs={12} md={4}>
           <Typography variant='h3' className={classes.title}>
-            Registration
+          Start Your Registration
           </Typography>
           <Typography variant='h5' className={classes.subtitle}>
             Complete all 3 steps to finish registration process

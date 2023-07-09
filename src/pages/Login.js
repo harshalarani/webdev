@@ -1,93 +1,4 @@
-// import React, { useState, useEffect } from 'react';
-// import './Login.css'
-// import {useNavigate} from 'react-router-dom'
 
-// const Login = () => {
-  // let navigate = useNavigate();
-//   const [usn, setUsn] = useState('');
-//   const [password, setPassword] = useState('');
-//   const [usnError, setUsnError] = useState('');
-//   const [passwordError, setPasswordError] = useState('');
-//   const [submitted, setSubmitted] = useState(false);
-
-//   useEffect(() => {
-//     if (submitted) {
-//       if (usnError === '' && passwordError === '') {
-//         alert('Sign-in successful!');
-//         navigate('/user');
-//       } else {
-//         alert('Invalid USN or password');
-//       }
-//     }
-//   }, [submitted, usnError, passwordError]);
-
-  // const validateUsn = (value) => {
-  //   const usnRegex = /^[0-9][A-Za-z]{2}[0-9]{2}[A-Za-z]{2}[0-9]{3}$/;
-  //   if (!value.match(usnRegex)) {
-  //     setUsnError('Invalid USN format. Example: 1BM21CS086');
-  //   } else {
-  //     setUsnError('');
-  //   }
-  // };
-
-  // const validatePassword = (value) => {
-  //   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
-  //   if (!value.match(passwordRegex)) {
-  //     setPasswordError(
-  //       'Password should be at least 8 characters long and include a mixture of uppercase, lowercase, and digits.'
-  //     );
-  //   } else {
-  //     setPasswordError('');
-  //   }
-  // };
-
-//   const handleSignIn = (e) => {
-//     e.preventDefault();
-//     // this.props.history.push('/dashboard')
-//     setSubmitted(true);
-//     validateUsn(usn);
-//     validatePassword(password);
-//   };
-
-//   return (
-//     <div>
-//       <h1>Sign In</h1>
-//       <form onSubmit={handleSignIn}>
-//         <div>
-//           <label>USN:</label>
-//           <input
-//             type="text"
-//             value={usn}
-//             onChange={(e) => {
-//               setUsn(e.target.value);
-//               if (submitted) {
-//                 validateUsn(e.target.value);
-//               }
-//             }}
-//           />
-//           {submitted && usnError && <span>{usnError}</span>}
-//         </div>
-//         <div>
-//           <label>Password:</label>
-//           <input
-//             type="password"
-//             value={password}
-//             onChange={(e) => {
-//               setPassword(e.target.value);
-//               if (submitted) {
-//                 validatePassword(e.target.value);
-//               }
-//             }}
-//           />
-//           {submitted && passwordError && <span>{passwordError}</span>}
-//         </div>
-//         <button type="submit">Sign In</button>
-//       </form>
-//     </div>
-//   );
-// };
-
-// export default Login;
 import React from 'react';
 import { useEffect, useState } from "react";
 import "./Login.css";
@@ -99,6 +10,7 @@ import register from "./images/press-play.svg";
  
 
 function Login() {
+  // const history = useHistory();
   let navigate = useNavigate();
   const [usn, setUsn] = useState('');
   const [sem, setsem] = useState('');
@@ -138,7 +50,7 @@ function Login() {
   };
 
   const signinBtn = () => {
-    setSignupMode("");
+    window.location.href = "/Pages";
   };
   const handlesubmit =() =>{
     validateUsn(usn);

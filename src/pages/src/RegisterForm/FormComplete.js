@@ -22,7 +22,7 @@ export default () => {
   return (
     <Fragment>
       <Typography variant='h5' className={classes.title}>
-        Congratulation! You completed registration process.
+        Congratulations! You completed registration process.
       </Typography>
       <Button variant='contained' color='primary' onClick={reload}>
         Go to Home
