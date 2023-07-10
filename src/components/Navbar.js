@@ -6,6 +6,7 @@ import Image from "./bms.png";
 
 
 const Navbar = () => {
+
   return (
     <nav className="navbar">
       <div className="logo">

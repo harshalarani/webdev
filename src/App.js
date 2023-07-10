@@ -30,7 +30,7 @@ function App() {
           <Route path="/SportEvent" element={<SportEvent/>} />
           <Route path="/Fests" element={<Fests/>} />
           <Route path="/EventToday" element={<EventToday/>} />
-          <Route path="/Profile" element={<Profile/>} />
+          <Route path="/profile" element={<Profile/>} />
           <Route path="/event_list" element={<Event_list/>} />
           <Route path="/password_change" element={<PassChanger/>} />
 

@@ -22,14 +22,13 @@ const Mori = () => {
         {/* <h2 class="text-sm title-font text-gray-500 tracking-widest">BRAND NAME</h2> */}
         <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">The Catcher in the Rye</h1>
         <p class="leading-relaxed">Get ready for an extraordinary academic extravaganza! Presenting the Science and Innovation Expo 2023, where brilliance meets creativity!Experience the exhilarating Academic Showdown 2023, where lightning-fast quizzes, brain-teasing puzzles, intense debates, groundbreaking innovations, and the ultimate showdown collide in a battle of intellectual prowess. Claim victory in each round for a chance to win cash prizes, trophies, and exclusive opportunities, while forging connections and leaving a lasting mark on the world of academia. Don't miss this extraordinary event that will test your limits and crown the true champions of knowledge!</p>
-        {/* <p class ="leading-relaxed"></p> */}
         <br/>
         <p class ='leading-relaxed'>Date : 15 July 2023 </p>
-        {/* <p class ="leading-relaxed"></p> */}
+        
         <p class ="leading-relaxed">Time : 2:30 pm to 3:30 pm</p>
-        {/* <p class ="leading-relaxed"></p> */}
+      
         <p class ="leading-relaxed"> Venue : Audi-2</p>
-        {/* <p class ="leading-relaxed"></p> */}
+        
         <br/>
         <p class ="leading-relaxed">For Further Queries, Contact:</p>
         {/* <p class ="leading-relaxed"></p> */}

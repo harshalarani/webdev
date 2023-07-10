@@ -1,5 +1,6 @@
 import React from 'react';
 import './profile.css';
+
 // import 'Photo'
 import kanjika from './Photo_meri copy.jpeg'
 
@@ -58,7 +59,7 @@ const change_pass = () =>{
     <div class="mt-12 flex flex-col justify-center">
       {/* <p class="text-gray-600 text-center font-light lg:px-16"></p> */}
       <button
-    class="text-indigo-500 py-2 px-4  font-medium mt-4" onclick={change_pass}
+    class="text-indigo-500 py-2 px-4  font-medium mt-4" onClick={change_pass}
   >
     change password
   </button>

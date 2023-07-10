@@ -1,5 +1,6 @@
 
 import React from 'react';
+import axios from 'axios';
 import { useEffect, useState } from "react";
 import "./Login.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -47,6 +48,7 @@ function Login() {
 
   const signupBtn = () => {
     setSignupMode("sign-up-mode");
+   
   };
 
   const signinBtn = () => {
@@ -56,10 +58,24 @@ function Login() {
     validateUsn(usn);
     validateEmail(email);
     validateSem(sem);
+    console.log(usn,user,sem,branch,email);
 
-    if(semError==='' && usnError===''){
-    alert('Sign up successful!')
-    }
+    axios.post(" http://localhost:8080/login", {
+      usn: usn,
+      name:user,
+      semester: sem,
+      branch: branch,
+      email:email
+    })
+    .then((response) => {
+      console.log(response);
+      if(semError==='' && usnError===''){
+        alert('Sign up successful!')
+        }
+    });
+
+    
+    
     
     };
     const handlelogin =() =>{
