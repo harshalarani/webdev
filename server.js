@@ -65,6 +65,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const cors = require('cors');
 const app = express();
 
 // Connect to MongoDB
@@ -95,6 +96,7 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 
 app.use(express.json());
+app.use(cors());
 
 // Signup route
 app.get('/', async (req, res) => {
@@ -113,7 +115,8 @@ app.post('/login', async (req, res) => {
     if (existingUser) {
       return res.status(409).json({ error: 'User already exists' });
     }
-    const password = usn
+    const password = usn;
+    const username = usn;
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -124,6 +127,7 @@ app.post('/login', async (req, res) => {
       semester,
       branch,
       email,
+      username,
       password: hashedPassword,
     });
 
