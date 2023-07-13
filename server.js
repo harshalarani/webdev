@@ -69,7 +69,7 @@ const cors = require('cors');
 const app = express();
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://canjeeka:jc0vNmcIAOyB3xGr@cluster0.jwh1lfj.mongodb.net/?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://harshalarani7:EJsiKJe7BXcpoRjB@cluster0.ds1kk0p.mongodb.net/mydatabase?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

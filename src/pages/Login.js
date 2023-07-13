@@ -39,7 +39,7 @@ function Login() {
     if (submitted) {
       if (userError === '') {
         alert('Sign-in successful!');
-        navigate('/user');
+        navigate('/profile');
       } else {
         alert('Invalid User');
       }
@@ -52,7 +52,7 @@ function Login() {
   };
 
   const signinBtn = () => {
-    window.location.href = "/Pages";
+    window.location.href = "/login";
   };
   const handlesubmit =() =>{
     validateUsn(usn);
@@ -248,7 +248,7 @@ function Login() {
           <div className="content">
             <h3>Already signed up?</h3>
             <p>
-              Use your USN as username and name as password
+              Use your USN as username and password
             </p>
             <button
               className="btn transparent"

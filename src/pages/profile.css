@@ -1,60 +1,10 @@
-/* .user-profile-container {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    text-align: center;
-    margin-top: 5%;
-  }
-  
-  .head {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .user-image {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 10px;
-  }
-  
-  .image-upload input {
-    display: "";
-  }
-  
-  .subheading {
-    font-size: 20px;
-    margin-top: 20px;
-  }
-  
-  .details {
-    margin-bottom: 10px;
-  }
-  
-  .event-table {
-    width: 100%;
-    margin-top: 20px;
-    border-collapse: collapse;
-  }
-  
-  .event-table th,
-  .event-table td {
-    border: 1px solid #ccc;
-    padding: 10px;
-  }
-  
-  .event-table th {
-    font-weight: bold;
-  }
-   */
+
    .user-profile-container {
     max-width: 500px;
     margin: 2.4% auto;
     padding: 20px;
     border: 1px solid #ccc;
+    
     border-radius: 5px;
     text-align: center;
     /* box-shadow:;
@@ -82,15 +32,7 @@
     background-color: #ccc;
     margin-bottom: 10px;
   }
-  
-  .image-upload {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .image-upload input {
-    display: none;
-  }
+ 
   
   .edit-icon {
     position: absolute;
@@ -142,3 +84,8 @@
     background-color: #0056b3;
   }
   
+  .space-x-8 {
+    display: flex;
+    justify-content: flex-end;
+    margin-left: 800px;
+  }
