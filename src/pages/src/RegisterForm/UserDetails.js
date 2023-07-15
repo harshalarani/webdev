@@ -4,41 +4,42 @@ import { TextField, Grid, Select, MenuItem } from "@material-ui/core";
 import { isWidthDown } from "@material-ui/core/withWidth";
 //CONTEXT
 import { UserContext } from "./UserContext";
-import { useState
- } from "react";
-export default props => {
+import { useState } from "react";
+const UserDetails = (props) => {
   const [state] = useContext(UserContext);
   const { user, errors } = state;
   const dateLimit = new Date();
   dateLimit.setFullYear(dateLimit.getFullYear() - 18);
-  const [selectedEvent, setSelectedEvent] = useState('');
+  const [selectedEvent, setSelectedEvent] = useState("");
+
+  // console.log("user", user.team_name);
 
   const handleEventChange = (event) => {
     setSelectedEvent(event.target.value);
     user.event_selected = event.target.value;
   };
   const events = [
-    { id: 1, name: 'Event 1' },
-    { id: 2, name: 'Event 2' },
-    { id: 3, name: 'Event 3' },
+    { id: 1, name: "Event 1" },
+    { id: 2, name: "Event 2" },
+    { id: 3, name: "Event 3" },
     // Add more events as needed
   ];
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
         <TextField
-          placeholder='Type your team_name here'
-          name='team_name'
-          label='team_name'
+          placeholder="Type your team_name here"
+          name="team_name"
+          label="team_name"
           value={user.team_name}
-          variant='outlined'
+          variant="outlined"
           InputLabelProps={{
-            shrink: true
+            shrink: true,
           }}
           required
           inputProps={{
             minLength: 3,
-            maxLength: 20
+            maxLength: 20,
           }}
           error={!!errors["team_name"]}
           fullWidth
@@ -46,15 +47,15 @@ export default props => {
       </Grid>
       <Grid item xs={12}>
         <TextField
-          placeholder='Type your email here'
-          name='email'
-          label='Email'
+          placeholder="Type your email here"
+          name="email"
+          label="Email"
           value={user.email}
-          type='email'
-          variant='outlined'
-          margin='normal'
+          type="email"
+          variant="outlined"
+          margin="normal"
           InputLabelProps={{
-            shrink: true
+            shrink: true,
           }}
           error={!!errors["email"]}
           required
@@ -63,15 +64,15 @@ export default props => {
       </Grid>
       <Grid item xs={12}>
         <TextField
-          placeholder='Type your phone number here'
-          name='phone'
-          label='Phone'
+          placeholder="Type your phone number here"
+          name="phone"
+          label="Phone"
           value={user.phone}
-          type='number'
-          variant='outlined'
-          margin='normal'
+          type="number"
+          variant="outlined"
+          margin="normal"
           InputLabelProps={{
-            shrink: true
+            shrink: true,
           }}
           error={!!errors["number"]}
           required
@@ -87,9 +88,11 @@ export default props => {
           margin="normal"
           fullWidth
           required
-          displayEmpty 
+          displayEmpty
         >
-          <MenuItem value="" disabled>Select an event</MenuItem>
+          <MenuItem value="" disabled>
+            Select an event
+          </MenuItem>
           {events.map((event) => (
             <MenuItem key={event.id} value={event.id}>
               {event.name}
@@ -165,3 +168,4 @@ export default props => {
     </Grid>
   );
 };
+export default UserDetails;
