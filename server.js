@@ -40,7 +40,6 @@ const registerSchema = new mongoose.Schema({
 });
 
 const User = mongoose.model("User", userSchema);
-const Register = mongoose.model("Register", registerSchema);
 
 app.use(express.json());
 app.use(cors());
@@ -97,10 +96,24 @@ app.post("/register_events", async (req, res) => {
     // const obj = { name: req.body.name,
     //   usn: req.body.usn,
     // }
+    console.log("req", req.body);
+    // const routes = {
+    //   AcademicEvents: "AcademicEvents",
+    //   FunEvents: "FunEvents",
+    //   SportEvent: "SportEvent",
+    //   Fests: "Fests",
+    //   EventToday: "EventToday",
+    // };
 
-    const { team_name, email, phone, event_selected, bio, website } = req.body;
+    const { team_name, email, phone, event_selected, bio, website, route } =
+      req.body;
 
-    const existingRegistration = await Register.findOne({ email });
+    const Register = mongoose.model("Register", registerSchema, route);
+
+    const existingRegistration = await Register.findOne({
+      email,
+      event_selected,
+    });
     if (existingRegistration) {
       return res.status(409).json({ error: "Registration already exists" });
     }

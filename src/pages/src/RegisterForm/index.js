@@ -79,20 +79,24 @@ const Register = (props) => {
   const handleCloseSnackbar = () => {
     setOpen(false);
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (activeStep < steps.length - 1) handleNext();
     else {
-      axios
-        .post("http://localhost:8080/register_events", state.user)
+      await axios
+        .post("http://localhost:8080/register_events", {
+          ...state.user,
+          route: props.route,
+        })
         .then((res) => {
           console.log("res", res);
         })
         .catch((err) => console.log("err", err));
+      setCompleted(true);
     }
   };
 
-  console.log("state", state);
+  // console.log("props", props);
 
   const getStepContent = (step) => {
     switch (step) {

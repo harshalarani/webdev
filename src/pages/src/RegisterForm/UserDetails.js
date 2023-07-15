@@ -85,7 +85,7 @@ const UserDetails = (props) => {
           value={user.event_selected}
           onChange={handleEventChange}
           variant="outlined"
-          margin="normal"
+          // margin="normal"
           fullWidth
           required
           displayEmpty
