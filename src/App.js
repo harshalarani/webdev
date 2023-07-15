@@ -22,14 +22,12 @@ import Event_list from "./pages/Event_list";
 import PassChanger from "./pages/PassChanger";
 function App() {
   const events = [
-    { path: "AcademicEvents" },
-    { path: "FunEvents" },
-    { path: "SportEvent" },
-    { path: "Fests" },
-    { path: "EventToday" },
+    { path: "AcademicEvents", element: <AcademicEvents /> },
+    { path: "FunEvents", element: <FunEvents /> },
+    { path: "SportEvent", element: <SportEvent /> },
+    { path: "Fests", element: <Fests /> },
+    { path: "EventToday", element: <EventToday /> },
   ];
-
-  const element = <Appa />;
 
   return (
     <Router>
@@ -40,37 +38,34 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/events" element={<Events />} />
-          <Route path="/AcademicEvents" element={<AcademicEvents />} />
-          <Route path="/FunEvents" element={<FunEvents />} />
-          <Route path="/SportEvent" element={<SportEvent />} />
-          <Route path="/Fests" element={<Fests />} />
-          <Route path="/EventToday" element={<EventToday />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/event_list" element={<Event_list />} />
           <Route path="/password_change" element={<PassChanger />} />
 
-          {/* {events.map((event) => {
-            console.log("event", event);
-            <Route
-              path={`/register/${event.path}`}
-              element={<Appa />}
-            />;
-          })} */}
-          {/* {useRoutes(
-            [
-              "/register/AcademicEvents",
-              "/register/FunEvents",
-              "/register/SportEvent",
-              "/register/Fests",
-              "/register/EventToday",
-            ].map((path) => ({ path, element }))
-          )} */}
-          <Route path="/register/AcademicEvents" element={<Appa />} />
+          {events.map((event) => {
+            return <Route path={`/${event.path}`} element={event.element} />;
+          })}
+
+          {/* <Route path="/AcademicEvents" element={<AcademicEvents />} />
+          <Route path="/FunEvents" element={<FunEvents />} />
+          <Route path="/SportEvent" element={<SportEvent />} />
+          <Route path="/Fests" element={<Fests />} />
+          <Route path="/EventToday" element={<EventToday />} /> */}
+
+          {events.map((event) => {
+            return (
+              <Route path={`/register/${event.path}`} element={<Appa />} />
+            );
+          })}
+
+          {/* <Route path="/register/AcademicEvents" element={<Appa />} />
           <Route path="/register/FunEvents" element={<Appa />} />
           <Route path="/register/SportEvent" element={<Appa />} />
           <Route path="/register/Fests" element={<Appa />} />
-          <Route path="/register/EventToday" element={<Appa />} />
+          <Route path="/register/EventToday" element={<Appa />} /> */}
+
           {/* <Route path="/register" element={<Appa />} /> */}
+
           <Route path="/moreinfo" element={<Mori />} />
         </Routes>
       </div>
