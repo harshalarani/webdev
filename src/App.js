@@ -20,6 +20,8 @@ import Mori from "./pages/Mori";
 import Profile from "./pages/Profile";
 import Event_list from "./pages/Event_list";
 import PassChanger from "./pages/PassChanger";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function App() {
   const events = [
     { path: "AcademicEvents", element: <AcademicEvents /> },
@@ -33,6 +35,18 @@ function App() {
     <Router>
       <div>
         <Navbar />
+        <ToastContainer
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutPage />} />

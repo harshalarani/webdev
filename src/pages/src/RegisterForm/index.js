@@ -19,6 +19,8 @@ import Button from "@material-ui/core/Button";
 //CONTEXT
 import { UserContext } from "./UserContext";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -90,9 +92,34 @@ const Register = (props) => {
         })
         .then((res) => {
           console.log("res", res);
+          toast.success("Registration Successful", {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
+
+          setTimeout(() => {
+            setCompleted(true);
+          }, 5000);
         })
-        .catch((err) => console.log("err", err));
-      setCompleted(true);
+        .catch((err) => {
+          console.log("err", err);
+          toast.error("Registration Unsuccessful", {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
+        });
     }
   };
 
@@ -234,6 +261,7 @@ const Register = (props) => {
           }
         />
       </Snackbar>
+
       {completed && (
         <Box className={(classes.root, classes.center)}>
           <FormComplete />
