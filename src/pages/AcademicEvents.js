@@ -2,6 +2,7 @@ import React from 'react';
 import SearchBar from '../components/SearchBar';
 import EventBox from '../components/EventBox';
 import posterImage from './event6.jpeg';
+import './AcademicEvents.css'
 
 const AcademicEvents = () => {
   const handleSearch = (searchText) => {
@@ -15,14 +16,14 @@ const AcademicEvents = () => {
       posterUrl: posterImage,
       eventTitle: 'Event 1',
       eventDescription: 'Description for Event 1',
-      eventDate: '2023-06-30', // Add the event date here
+      eventDate: '2023-08-30', // Add the event date here
     },
     {
       id: 2,
       posterUrl: posterImage,
       eventTitle: 'Event 2',
       eventDescription: 'Description for Event 2',
-      eventDate: '2023-07-15', // Add the event date here
+      eventDate: '2023-08-15', // Add the event date here
     },
     {
       id: 3,
@@ -36,7 +37,7 @@ const AcademicEvents = () => {
   return (
     <div className="huu">
       <SearchBar onSearch={handleSearch} />
-      <div className="hello">
+    
         <h1 style={{ textAlign: 'center' }}>Academic Events</h1>
         {eventBoxes.map((event) => (
           <EventBox
@@ -47,7 +48,7 @@ const AcademicEvents = () => {
             eventDate={event.eventDate}
           />
         ))}
-      </div>
+
     </div>
   );
 };
