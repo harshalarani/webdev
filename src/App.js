@@ -56,8 +56,14 @@ function App() {
           <Route path="/event_list" element={<Event_list />} />
           <Route path="/password_change" element={<PassChanger />} />
 
-          {events.map((event) => {
-            return <Route path={`/${event.path}`} element={event.element} />;
+          {events.map((event, index) => {
+            return (
+              <Route
+                path={`/${event.path}`}
+                element={event.element}
+                key={index}
+              />
+            );
           })}
 
           {/* <Route path="/AcademicEvents" element={<AcademicEvents />} />
@@ -66,9 +72,13 @@ function App() {
           <Route path="/Fests" element={<Fests />} />
           <Route path="/EventToday" element={<EventToday />} /> */}
 
-          {events.map((event) => {
+          {events.map((event, index) => {
             return (
-              <Route path={`/register/${event.path}`} element={<Appa />} />
+              <Route
+                path={`/register/${event.path}`}
+                element={<Appa />}
+                key={index}
+              />
             );
           })}
 
