@@ -1,58 +1,84 @@
+.image-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
 
-  
-  .image-gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .image-row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .image-container {
-    flex: 1;
-    padding: 10px;
-    box-sizing: border-box;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    margin: 10px; /* Add margin for spacing */
-  }
-  
-  .image-container::before {
-    content: "";
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    border: 10px solid #090707;
-    border-radius: 15px;
-    z-index: -1;
-    background-color: #090707;
-  }
-  
-  .image-container img {
-    width: 300px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 15px;
-  }
-  
-  .image-container a {
-    display: block;
-    color: #f2dddd;
-    text-decoration: none;
-    margin-top: 10px;
-    text-align: center;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  }
-  
-  .image-container a:hover {
-    color: #383636; /* Change the text color to white when hovered */
-  }
-  
+.image-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.image-container {
+  flex: 1;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+  transition: transform 0.3s ease-in-out;
+  background-color: #f2f2f2;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(1, 1, 1, 0.1);
+  width: 350px;
+  height: 250px;
+}
+
+.image-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.image-container::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 10px solid #080808;
+  border-radius: 15px;
+  z-index: -1;
+  background-color: #030303;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  max-height: 200px;
+}
+
+.image-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: #f2dddd;
+  background-color: rgba(0, 0, 0, 0.7);
+  margin: 0;
+  font-weight: bold;
+  box-sizing: border-box;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.image-container:hover .image-text {
+  opacity: 1;
+}
+
+.image-container a {
+  display: block;
+  text-decoration: none;
+}
+
+.image-container a:hover .image-text {
+  color: #fff6f6;
+}

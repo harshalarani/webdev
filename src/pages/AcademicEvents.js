@@ -1,7 +1,8 @@
-import React from "react";
-import SearchBar from "../components/SearchBar";
-import EventBox from "../components/EventBox";
-import posterImage from "./event6.jpeg";
+import React from 'react';
+import SearchBar from '../components/SearchBar';
+import EventBox from '../components/EventBox';
+import posterImage from './event6.jpeg';
+import './AcademicEvents.css'
 
 const AcademicEvents = () => {
   const handleSearch = (searchText) => {
