@@ -1,7 +1,7 @@
 import React, { createContext, useState } from "react";
 export const UserContext = createContext([{}, () => {}]);
 
-export default props => {
+export default (props) => {
   const [state, setState] = useState({
     user: {
       team_name: "",
@@ -14,9 +14,9 @@ export default props => {
       website: "",
       acceptTerms: false,
       newsletter: false,
-      event_selected: ""
+      event_selected: "",
     },
-    errors: {}
+    errors: {},
   });
   return (
     <UserContext.Provider value={[state, setState]}>

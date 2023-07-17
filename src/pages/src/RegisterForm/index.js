@@ -18,45 +18,48 @@ import StepContent from "@material-ui/core/StepContent";
 import Button from "@material-ui/core/Button";
 //CONTEXT
 import { UserContext } from "./UserContext";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     padding: 0,
     [theme.breakpoints.up("md")]: {
-      padding: theme.spacing(8, 12)
+      padding: theme.spacing(8, 12),
     },
     [theme.breakpoints.up("sm")]: {
-      padding: theme.spacing(4, 6)
-    }
+      padding: theme.spacing(4, 6),
+    },
   },
   center: {
-    textAlign: "center"
+    textAlign: "center",
   },
   content: {
-    padding: theme.spacing(3, 0, 3, 5)
+    padding: theme.spacing(3, 0, 3, 5),
   },
   buttonsContainer: {
-    margin: theme.spacing(2, 0)
+    margin: theme.spacing(2, 0),
   },
   button: {
-    marginRight: theme.spacing(2)
+    marginRight: theme.spacing(2),
   },
   error: {
-    backgroundColor: theme.palette.error.dark
+    backgroundColor: theme.palette.error.dark,
   },
   message: {
     display: "flex",
-    alignItems: "center"
+    alignItems: "center",
   },
   icon: {
-    marginRight: theme.spacing(1)
-  }
+    marginRight: theme.spacing(1),
+  },
 }));
 
 const steps = ["Basic information", "User details", "Summary"];
 
 //MAIN COMPONENT
-export default props => {
+const Register = (props) => {
   const [completed, setCompleted] = React.useState(false);
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
@@ -65,28 +68,64 @@ export default props => {
   const [state, setState] = useContext(UserContext);
 
   const handleNext = () => {
-    setActiveStep(prevActiveStep => prevActiveStep + 1);
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
   const handleBack = () => {
-    setActiveStep(prevActiveStep => prevActiveStep - 1);
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  const isStepOptional = step => {
+  const isStepOptional = (step) => {
     return step === 1;
   };
   const handleCloseSnackbar = () => {
     setOpen(false);
   };
-  const handleSubmit = e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (activeStep < steps.length - 1) handleNext();
     else {
-      setCompleted(true);
+      await axios
+        .post("http://localhost:8080/register_events", {
+          ...state.user,
+          route: props.route,
+        })
+        .then((res) => {
+          console.log("res", res);
+          toast.success("Registration Successful", {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
+
+          setTimeout(() => {
+            setCompleted(true);
+          }, 5000);
+        })
+        .catch((err) => {
+          console.log("err", err);
+          toast.error("Registration Unsuccessful", {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
+        });
     }
   };
 
-  const getStepContent = step => {
+  // console.log("props", props);
+
+  const getStepContent = (step) => {
     switch (step) {
       case 0:
         return <UserDetails />;
@@ -99,13 +138,13 @@ export default props => {
     }
   };
 
-  const handleError = e => {
+  const handleError = (e) => {
     errors[e.target.name] = e.target.validationMessage;
     setState({ ...state, errors: { ...errors } });
     setOpen(true);
   };
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     //PASSWORD MATCHING
     if (
       e.target.name === "confirmPassword" &&
@@ -139,7 +178,7 @@ export default props => {
     setState({
       ...state,
       user: { ...state.user, [e.target.name]: value },
-      errors: { ...errors }
+      errors: { ...errors },
     });
   };
 
@@ -147,12 +186,12 @@ export default props => {
     <Fragment>
       {!completed && (
         <Box className={classes.root}>
-          <Stepper activeStep={activeStep} orientation='vertical'>
+          <Stepper activeStep={activeStep} orientation="vertical">
             {steps.map((label, index) => {
               const labelProps = {};
               if (isStepOptional(index)) {
                 labelProps.optional = (
-                  <Typography variant='caption'>Optional</Typography>
+                  <Typography variant="caption">Optional</Typography>
                 );
               }
 
@@ -171,27 +210,27 @@ export default props => {
                         <Button
                           disabled={activeStep === 0}
                           className={classes.button}
-                          variant='contained'
+                          variant="contained"
                           onClick={handleBack}
                         >
                           Back
                         </Button>
                         {activeStep < steps.length - 1 && (
                           <Button
-                            type='submit'
+                            type="submit"
                             className={classes.button}
-                            variant='contained'
-                            color='primary'
+                            variant="contained"
+                            color="primary"
                           >
                             Next
                           </Button>
                         )}
                         {activeStep === steps.length - 1 && (
                           <Button
-                            type='submit'
+                            type="submit"
                             className={classes.button}
-                            variant='contained'
-                            color='primary'
+                            variant="contained"
+                            color="primary"
                           >
                             Submit
                           </Button>
@@ -222,6 +261,7 @@ export default props => {
           }
         />
       </Snackbar>
+
       {completed && (
         <Box className={(classes.root, classes.center)}>
           <FormComplete />
@@ -230,3 +270,5 @@ export default props => {
     </Fragment>
   );
 };
+
+export default Register;

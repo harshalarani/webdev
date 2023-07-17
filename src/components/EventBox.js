@@ -1,8 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import './EventBox.css';
+import React, { useState, useEffect } from "react";
+import "./EventBox.css";
 
-const EventBox = ({ posterUrl, eventTitle, eventDescription, eventDate }) => {
-  const [countdown, setCountdown] = useState('');
+const EventBox = ({
+  route,
+  posterUrl,
+  eventTitle,
+  eventDescription,
+  eventDate,
+}) => {
+  const [countdown, setCountdown] = useState("");
 
   useEffect(() => {
     const calculateCountdown = () => {
@@ -11,7 +17,9 @@ const EventBox = ({ posterUrl, eventTitle, eventDescription, eventDate }) => {
       const difference = eventDateTime.getTime() - now.getTime();
 
       const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const hours = Math.floor(
+        (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
       const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
@@ -22,18 +30,17 @@ const EventBox = ({ posterUrl, eventTitle, eventDescription, eventDate }) => {
     calculateCountdown();
 
     const countdownInterval = setInterval(calculateCountdown, 1000);
-    
+
     return () => {
       clearInterval(countdownInterval);
     };
   }, [eventDate]);
-  
-  
+
   const register_go = () => {
-    window.location.href = "/register";
+    window.location.href = `/register/${route}`;
   };
   const moreinfo = () => {
-    window.location.href = "/moreinfo"
+    window.location.href = "/moreinfo";
   };
   return (
     <div className="event-box">
@@ -43,8 +50,12 @@ const EventBox = ({ posterUrl, eventTitle, eventDescription, eventDate }) => {
         <p className="event-description">{eventDescription}</p>
         <p className="event-countdown">Countdown: {countdown}</p>
         <div className="button-container">
-          <button className="register-button" onClick={register_go}>Register</button>
-          <button className="info-button" onClick={moreinfo}>More Info</button>
+          <button className="register-button" onClick={register_go}>
+            Register
+          </button>
+          <button className="info-button" onClick={moreinfo}>
+            More Info
+          </button>
         </div>
       </div>
     </div>

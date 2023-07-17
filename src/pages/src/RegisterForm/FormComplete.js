@@ -1,17 +1,18 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { Typography, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles(theme => ({
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+const useStyles = makeStyles((theme) => ({
   root: {
     padding: theme.spacing(3),
     border: "1px solid #ddd",
     marginBottom: theme.spacing(2),
-    textAlign: "center"
+    textAlign: "center",
   },
   title: {
-    padding: theme.spacing(5, 0)
-  }
+    padding: theme.spacing(5, 0),
+  },
 }));
 
 export default () => {
@@ -19,12 +20,13 @@ export default () => {
   const reload = () => {
     window.location.href = "/";
   };
+
   return (
     <Fragment>
-      <Typography variant='h5' className={classes.title}>
+      <Typography variant="h5" className={classes.title}>
         Congratulations! You completed registration process.
       </Typography>
-      <Button variant='contained' color='primary' onClick={reload}>
+      <Button variant="contained" color="primary" onClick={reload}>
         Go to Home
       </Button>
     </Fragment>

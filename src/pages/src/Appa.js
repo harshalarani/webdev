@@ -7,13 +7,13 @@ import RegisterForm from "./RegisterForm";
 import Typography from "@material-ui/core/Typography";
 //CONTEXT
 import UserContextProvider from "./RegisterForm/UserContext";
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     minHeight: "100vh",
     alignContent: "stretch",
     [theme.breakpoints.down("sm")]: {
-      alignContent: "flex-start"
-    }
+      alignContent: "flex-start",
+    },
   },
   header: {
     padding: theme.spacing(5),
@@ -23,35 +23,38 @@ const useStyles = makeStyles(theme => ({
     textAlign: "center",
     backgroundColor: "#121212",
     [theme.breakpoints.down("sm")]: {
-      flexGrow: 1
-    }
+      flexGrow: 1,
+    },
   },
   title: {
     color: theme.palette.primary.contrastText,
-    marginBottom: theme.spacing(1)
+    marginBottom: theme.spacing(1),
   },
   subtitle: {
     color: theme.palette.primary.contrastText,
   },
   toolbar: {
-    justifyContent: "center"
-  }
+    justifyContent: "center",
+  },
 }));
 function Appa() {
   const classes = useStyles();
+
+  // console.log("text", window.location.pathname.slice(10));
+
   return (
     <UserContextProvider>
       <Grid container className={classes.root}>
         <Grid item className={classes.header} xs={12} md={4}>
-          <Typography variant='h3' className={classes.title}>
-          Start Your Registration
+          <Typography variant="h3" className={classes.title}>
+            Start Your Registration
           </Typography>
-          <Typography variant='h5' className={classes.subtitle}>
+          <Typography variant="h5" className={classes.subtitle}>
             Complete all 3 steps to finish registration process
           </Typography>
         </Grid>
         <Grid item xs={12} md={8}>
-          <RegisterForm />
+          <RegisterForm route={`${window.location.pathname.slice(10)}`} />
         </Grid>
       </Grid>
     </UserContextProvider>
