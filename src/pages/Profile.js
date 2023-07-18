@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import './profile.css';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import "./profile.css";
 
 const Profile = () => {
   const [profileData, setProfileData] = useState(null);
+  const [localUsn, setLocalUsn] = useState(window.localStorage.getItem("usn"));
 
   useEffect(() => {
     fetchData();
@@ -11,27 +12,28 @@ const Profile = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api/profile',{
-        params:{
-          usn:'usn'
-        }
+      const response = await axios.post("http://localhost:8080/api/profile", {
+        usn: localUsn,
       }); // Update the API endpoint if needed
 
+      // console.log("profile", response);
       // Assuming the response data is in the following format:
-      const { name, usn, department, sem } = response.data;
+      const user = response.data;
+      console.log("user", user);
+      const { name, usn, branch, semester } = user;
 
-      setProfileData({ name, usn, department, sem });
+      setProfileData({ name, usn, branch, semester });
     } catch (error) {
-      console.error('Error fetching profile data:', error);
+      console.error("Error fetching profile data:", error);
     }
   };
 
   function table_event() {
-    window.location.href = 'event_list';
+    window.location.href = "event_list";
   }
 
   const change_pass = () => {
-    window.location.href = 'password_change';
+    window.location.href = "password_change";
   };
 
   return (
@@ -70,9 +72,11 @@ const Profile = () => {
                 {profileData.name}
                 <span className="font-light text-gray-500"></span>
               </h1>
-              <p className="font-light text-white mt-3">{profileData.sem}</p>
+              <p className="font-light text-white mt-3">
+                {profileData.semester}
+              </p>
               <p className="mt-8 text-white">{profileData.usn}</p>
-              <p className="mt-2 text-white">{profileData.department}</p>
+              <p className="mt-2 text-white">{profileData.branch}</p>
             </>
           ) : (
             <p className="text-white">Loading profile data...</p>

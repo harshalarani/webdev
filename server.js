@@ -44,11 +44,46 @@ const User = mongoose.model("User", userSchema);
 app.use(express.json());
 app.use(cors());
 
+const verifyUserLogin = async (email, password) => {
+  try {
+    const user = await User.findOne({ email }).lean();
+    if (!user) {
+      return { status: "error", error: "user not found" };
+    }
+    if (await bcrypt.compare(password, user.password)) {
+      // creating a JWT token
+      // token = jwt.sign({id:user._id,username:user.email,type:'user'},JWT_SECRET,{ expiresIn: '2h'})
+      return { status: "ok" };
+    }
+    return { status: "error", error: "invalid password" };
+  } catch (error) {
+    console.log(error);
+    return { status: "error", error: "timed out" };
+  }
+};
+
+// login
+app.post("/login", async (req, res) => {
+  const { usn, pass } = req.body;
+  // we made a function to verify our user login
+  const response = await verifyUserLogin(usn, pass);
+  if (response.status === "ok") {
+    res.status(200).json({ message: "Login Successful" });
+    // storing our JWT web token as a cookie in our browser
+    // res.cookie("token", token, { maxAge: 2 * 60 * 60 * 1000, httpOnly: true }); // maxAge: 2 hours
+    // res.redirect("/");
+  } else {
+    res.json(response);
+  }
+});
+
 // Signup route
 app.post("/signup", async (req, res) => {
   try {
     // Extract the user data from the request body
-    const { usn, name, semester, branch, email, password } = req.body;
+    const { usn, name, semester, branch, email } = req.body;
+
+    console.log("req", req.body);
 
     // Check if the user already exists
     const existingUser = await User.findOne({ email });
@@ -58,7 +93,7 @@ app.post("/signup", async (req, res) => {
 
     // Hash the password
     const saltRounds = 10;
-    const hashedPassword = await bcrypt.hash(password, saltRounds);
+    const hashedPassword = await bcrypt.hash("abcdefgh", saltRounds);
 
     // Create a new user document
     const newUser = new User({
@@ -170,26 +205,27 @@ app.post("/password_change", async (req, res) => {
 });
 
 // Profile route
-app.get("/api/profile", async (req, res) => {
+app.post("/api/profile", async (req, res) => {
   try {
     // Assuming you want to fetch the profile data for a specific user, you can pass the user's email as a query parameter
-    const { usn } = req.query;
+    const { usn } = req.body;
 
     // Find the user with the provided email
-    const user = await User.findOne({ usn });
+    const user = await User.findOne({ email: usn });
     if (!user) {
       return res.status(404).json({ error: "User not found" });
     }
 
     // Return the user's profile data
-    const profileData = {
-      name: user.name,
-      usn: user.usn,
-      sem: user.semester,
-      department: user.branch,
-    };
+    // const profileData = {
+    //   name: user.name,
+    //   usn: user.usn,
+    //   sem: user.semester,
+    //   department: user.branch,
+    // };
 
-    res.json(profileData);
+    // res.json(profileData);
+    res.json(user);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal server error" });

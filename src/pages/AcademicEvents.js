@@ -80,23 +80,18 @@ const AcademicEvents = () => {
     <div className="huu">
       <SearchBar onSearch={handleSearch} />
       <div className="hello">
-        <div className="eventshead">
-          <h1 style={{ textAlign: "center" }}>Academic Events</h1>
-        </div>
-        <div className="event-boxes-container">
-          {eventBoxes.map((event, index) => (
-            <EventBox
-              route="AcademicEvents"
-              key={event.id}
-              posterUrl={event.posterUrl}
-              eventTitle={event.eventTitle}
-              eventDescription={event.eventDescription}
-              eventDate={event.eventDate}
-              shouldAnimate={index >= 3 && shouldAnimate}
-            />
-          ))}
-        </div>
-      </div>
+        <h1 style={{ textAlign: "center" }}>Academic Events</h1>
+        {eventBoxes.map((event) => (
+          <EventBox
+            route="AcademicEvents"
+            key={event.id}
+            posterUrl={event.posterUrl}
+            eventTitle={event.eventTitle}
+            eventDescription={event.eventDescription}
+            eventDate={event.eventDate}
+          />
+        ))}
+
     </div>
   );
 };
