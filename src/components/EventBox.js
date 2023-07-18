@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./EventBox.css";
 
 const EventBox = ({
@@ -7,8 +7,18 @@ const EventBox = ({
   eventTitle,
   eventDescription,
   eventDate,
+  shouldAnimate
 }) => {
   const [countdown, setCountdown] = useState("");
+  const eventBoxRef = useRef(null);
+
+  const register_go = () => {
+    window.location.href = `/register/${route}`;
+  };
+
+  const moreinfo = () => {
+    window.location.href = "/moreinfo";
+  };
 
   useEffect(() => {
     const calculateCountdown = () => {
@@ -36,14 +46,29 @@ const EventBox = ({
     };
   }, [eventDate]);
 
-  const register_go = () => {
-    window.location.href = `/register/${route}`;
-  };
-  const moreinfo = () => {
-    window.location.href = "/moreinfo";
-  };
+  useEffect(() => {
+    if (shouldAnimate && eventBoxRef.current) {
+      const handleScroll = () => {
+        const { top } = eventBoxRef.current.getBoundingClientRect();
+        const isVisible = top - window.innerHeight < 0;
+
+        if (isVisible) {
+          eventBoxRef.current.classList.add("animate");
+        }
+      };
+
+      window.addEventListener("scroll", handleScroll);
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }
+  }, [shouldAnimate]);
+
   return (
-    <div className="event-box">
+    <div
+      className={`event-box ${shouldAnimate ? "animate" : ""}`}
+      ref={shouldAnimate ? eventBoxRef : null}
+    >
       <img src={posterUrl} alt="Event Poster" className="event-poster" />
       <div className="text">
         <h2 className="event-title">{eventTitle}</h2>

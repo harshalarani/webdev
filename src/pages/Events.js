@@ -23,6 +23,7 @@ const Events = () => {
   };
 
   return (
+    <div className='rani'>
     <div className="image-gallery">
       <div className="image-row">
         {images.slice(0, 3).map((image, index) => (
@@ -43,6 +44,7 @@ const Events = () => {
             </a>
           </div>
         ))}
+      </div>
       </div>
     </div>
   );

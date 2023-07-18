@@ -4,7 +4,8 @@ import './AboutUs.css'
 const AboutUs = () => {
   return (
     <div className='hi'>
-      <h1>About Us</h1>
+      <div className='har'>
+      <h1>About Us</h1></div>
       <img src={image} alt="Event" style={{ width: '400px', height: '300px' }} />
       <div className='des'>BMSCE, is a college where plenty of events happen on a daily basis.
          Events hub-BMSCE helps you keep track of all the events happening and its complete details.

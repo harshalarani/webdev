@@ -7,9 +7,22 @@ text-align: center;
 background-color: #010101;
 height: 1000px;
 color: antiquewhite;
+animation: fadeIn 1s ease-in-out forwards;
 }
 .des{
 width:550px;
 font-size: 21px;
 color: antiquewhite;
+margin-top: 20px;
+}
+.har{
+ font-size: 70px;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

@@ -1,0 +1,25 @@
+.eventshead{
+margin-top: 20px;
+font-size: 50px;
+font-weight: bolder;
+}
+.huu{
+    animation: fadeIn 1s ease-in-out forwards;
+}
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  .event-boxes-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    gap: 10px;
+    margin: 0 auto;
+   /* Adjust the maximum width as needed */
+  }
+  
