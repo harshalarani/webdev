@@ -91,14 +91,23 @@ function Login() {
     const check = validateEmail(username);
     setSubmitted(true);
 
-    console.log("userError", userError, "check", check);
+    console.log(
+      "userError",
+      userError,
+      "check",
+      check,
+      "usn",
+      username,
+      "pass",
+      pass
+    );
 
     check &&
       axios
         .post("http://localhost:8080/login", {
           // usn: username,
-          usn: email,
-          password: pass,
+          usn: username,
+          pass: pass,
         })
         .then((response) => {
           console.log(response);
