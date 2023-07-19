@@ -37,13 +37,19 @@ function Login() {
   useEffect(() => {
     if (submitted) {
       if (userError === "") {
-        alert("Sign-in successful!");
-        navigate("/profile");
+        // alert("Sign-in successful!");
+        // navigate("/profile");
       } else {
-        alert("Invalid User");
+        // alert("Invalid User");
       }
     }
   }, [submitted, userError]);
+
+  useEffect(() => {
+    const checkUser = window.localStorage.getItem("usn");
+
+    if (checkUser) navigate("/profile");
+  }, []);
 
   const signupBtn = () => {
     setSignupMode("sign-up-mode");
@@ -73,6 +79,7 @@ function Login() {
         console.log(response);
         if (semError === "" && usnError === "") {
           alert("Sign up successful!");
+          setSignupMode("");
         }
       })
       .catch((err) => console.log("err", err));
@@ -80,30 +87,34 @@ function Login() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    validateUser(username);
+    // validateUser(username);
+    const check = validateEmail(username);
     setSubmitted(true);
 
-    axios
-      .post("http://localhost:8080/login", {
-        // usn: username,
-        usn: email,
-        password: pass,
-      })
-      .then((response) => {
-        console.log(response);
-        if (response.status === 200) {
-          alert("Sign in successful!");
-          navigate("/profile");
-          // window.localStorage.setItem("usn", username);
-          window.localStorage.setItem("usn", email);
-        } else {
-          alert("Invalid User");
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-        alert("Error occurred during login");
-      });
+    console.log("userError", userError, "check", check);
+
+    check &&
+      axios
+        .post("http://localhost:8080/login", {
+          // usn: username,
+          usn: email,
+          password: pass,
+        })
+        .then((response) => {
+          console.log(response);
+          if (response.status === 200) {
+            alert("Sign in successful!");
+            navigate("/profile");
+            // window.localStorage.setItem("usn", username);
+            window.localStorage.setItem("usn", username);
+          } else {
+            alert("Invalid User");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+          alert("Error occurred during login");
+        });
   };
 
   const validateSem = () => {
@@ -136,13 +147,17 @@ function Login() {
     }
   };
 
-  const validateEmail = () => {
+  const validateEmail = (value) => {
     const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-    if (!email.match(emailRegex)) {
+    if (!value.match(emailRegex)) {
       alert("Invalid email format");
-      setEmailError("Invalid");
+      // setEmailError("Invalid");
+      setUserError("Invalid");
+      return false;
     } else {
-      setEmailError("");
+      // setEmailError("");
+      setUserError("");
+      return true;
     }
   };
 
@@ -160,7 +175,7 @@ function Login() {
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                placeholder="Username"
+                placeholder="E-mail"
               />
             </div>
             <div className="input-field">
