@@ -93,7 +93,7 @@ app.post("/signup", async (req, res) => {
 
     // Hash the password
     const saltRounds = 10;
-    const hashedPassword = await bcrypt.hash("abcdefgh", saltRounds);
+    const hashedPassword = await bcrypt.hash(usn, saltRounds);
 
     // Create a new user document
     const newUser = new User({
