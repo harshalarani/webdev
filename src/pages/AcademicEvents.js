@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
-import SearchBar from '../components/SearchBar';
-import EventBox from '../components/EventBox';
-import posterImage from './event6.jpeg';
-import './AcademicEvents.css';
+import React, { useEffect, useRef, useState } from "react";
+import SearchBar from "../components/SearchBar";
+import EventBox from "../components/EventBox";
+import posterImage from "./event6.jpeg";
+import "./AcademicEvents.css";
 
 const AcademicEvents = () => {
   const handleSearch = (searchText) => {
@@ -70,9 +70,9 @@ const AcademicEvents = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -91,7 +91,11 @@ const AcademicEvents = () => {
             eventDate={event.eventDate}
           />
         ))}
+<<<<<<< HEAD
 </div>
+=======
+      </div>
+>>>>>>> 95472bef9458a7f0a9fb6eecb64d14e23b1a89f8
     </div>
   );
 };

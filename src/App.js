@@ -31,10 +31,12 @@ function App() {
     { path: "EventToday", element: <EventToday /> },
   ];
 
+  const check = window.localStorage.getItem("usn");
+
   return (
     <Router>
       <div>
-        <Navbar />
+        <Navbar isLoggedIn={!check ? false : true} />
         <ToastContainer
           position="bottom-right"
           autoClose={5000}

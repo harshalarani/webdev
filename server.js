@@ -44,38 +44,72 @@ const User = mongoose.model("User", userSchema);
 app.use(express.json());
 app.use(cors());
 
-const verifyUserLogin = async (email, password) => {
-  try {
-    const user = await User.findOne({ email }).lean();
-    if (!user) {
-      return { status: "error", error: "user not found" };
-    }
-    if (await bcrypt.compare(password, user.password)) {
-      // creating a JWT token
-      // token = jwt.sign({id:user._id,username:user.email,type:'user'},JWT_SECRET,{ expiresIn: '2h'})
-      return { status: "ok" };
-    }
-    return { status: "error", error: "invalid password" };
-  } catch (error) {
-    console.log(error);
-    return { status: "error", error: "timed out" };
-  }
+const verifyUserLogin = (email, password) => {
+  return new Promise((resolve, reject) => {
+    User.findOne({ email })
+      .lean()
+      .then(async (user) => {
+        if (!user) {
+          resolve({ status: "error", error: "user not found" });
+        } else {
+          const isPasswordValid = await bcrypt.compare(password, user.password);
+          if (isPasswordValid) {
+            resolve({ status: "ok" });
+          } else {
+            resolve({ status: "error", error: "invalid password" });
+          }
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        reject({ status: "error", error: "timed out" });
+      });
+  });
 };
 
 // login
 app.post("/login", async (req, res) => {
-  const { usn, pass } = req.body;
-  // we made a function to verify our user login
-  const response = await verifyUserLogin(usn, pass);
-  if (response.status === "ok") {
-    res.status(200).json({ message: "Login Successful" });
-    // storing our JWT web token as a cookie in our browser
-    // res.cookie("token", token, { maxAge: 2 * 60 * 60 * 1000, httpOnly: true }); // maxAge: 2 hours
-    // res.redirect("/");
-  } else {
-    res.json(response);
+  try {
+    const { usn, pass } = req.body;
+    const response = await verifyUserLogin(usn, pass);
+    if (response.status === "ok") {
+      res.status(200).json({ message: "Login Successful" });
+    }
+  } catch (err) {
+    console.log("err", err);
+    res.status(500).json({ error: "Internal server error" });
   }
 });
+
+// const verifyUserLogin = async (email, password) => {
+//   try {
+//     const user = await User.findOne({ email }).lean();
+//     if (!user) {
+//       return { status: "error", error: "user not found" };
+//     }
+//     if (await bcrypt.compare(password, user.password)) {
+//       return { status: "ok" };
+//     }
+//     return { status: "error", error: "invalid password" };
+//   } catch (error) {
+//     console.log(error);
+//     return { status: "error", error: "timed out" };
+//   }
+// };
+
+// // login
+// app.post("/login", async (req, res) => {
+//   try {
+//     const { usn, pass } = req.body;
+//     const response = await verifyUserLogin(usn, pass);
+//     if (response.status === "ok") {
+//       res.status(200).json({ message: "Login Successful" });
+//     }
+//   } catch (err) {
+//     console.log("err", err);
+//     res.status(500).json({ error: "Internal server error" });
+//   }
+// });
 
 // Signup route
 app.post("/signup", async (req, res) => {
@@ -93,7 +127,7 @@ app.post("/signup", async (req, res) => {
 
     // Hash the password
     const saltRounds = 10;
-    const hashedPassword = await bcrypt.hash("abcdefgh", saltRounds);
+    const hashedPassword = await bcrypt.hash(usn, saltRounds);
 
     // Create a new user document
     const newUser = new User({

@@ -1,13 +1,21 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./profile.css";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const [profileData, setProfileData] = useState(null);
   const [localUsn, setLocalUsn] = useState(window.localStorage.getItem("usn"));
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchData();
+  }, []);
+
+  useEffect(() => {
+    const checkUser = window.localStorage.getItem("usn");
+
+    if (!checkUser) navigate("/login");
   }, []);
 
   const fetchData = async () => {
@@ -89,6 +97,17 @@ const Profile = () => {
             onClick={change_pass}
           >
             Change Password
+          </button>
+        </div>
+        <div className="mt-1 flex flex-col justify-center">
+          <button
+            className="text-indigo-500 py-2 px-4  font-medium mt-4"
+            onClick={() => {
+              window.localStorage.removeItem("usn");
+              navigate("/");
+            }}
+          >
+            Logout
           </button>
         </div>
       </div>
