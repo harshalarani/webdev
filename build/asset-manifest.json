@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.41ca65f8.css",
+    "main.js": "/static/js/main.9f15746c.js",
+    "static/js/787.07238f48.chunk.js": "/static/js/787.07238f48.chunk.js",
+    "static/media/sportevent.png": "/static/media/sportevent.6e5a422853daedb1ebba.png",
+    "static/media/bms.png": "/static/media/bms.0be43deee277032ec87c.png",
+    "static/media/event6.jpeg": "/static/media/event6.9921980e181598326e47.jpeg",
+    "static/media/funevent.jpeg": "/static/media/funevent.d40a64b9ca9a2f6c2994.jpeg",
+    "static/media/event2.jpeg": "/static/media/event2.81803689d4cea05fac27.jpeg",
+    "static/media/event4.jpeg": "/static/media/event4.42b74884f2ca63b75c5f.jpeg",
+    "static/media/event5.jpeg": "/static/media/event5.ab6235b552d76284a7b3.jpeg",
+    "static/media/Photo_meri copy.jpeg": "/static/media/Photo_meri copy.3d86f23f20ffcfacd2fd.jpeg",
+    "static/media/Photo_meri.jpeg": "/static/media/Photo_meri.3d86f23f20ffcfacd2fd.jpeg",
+    "static/media/event3.jpeg": "/static/media/event3.6673d7395b88c015f61e.jpeg",
+    "static/media/event1.jpeg": "/static/media/event1.664ede58bd5b1b436abc.jpeg",
+    "static/media/eventtoday.jpeg": "/static/media/eventtoday.708d0f07415a6494b28b.jpeg",
+    "static/media/rocket.svg": "/static/media/rocket.cd046e1a495c96cce5951c2e227306cf.svg",
+    "static/media/press-play.svg": "/static/media/press-play.270edb260578be66d92f3ad0f04b50ab.svg",
+    "index.html": "/index.html",
+    "main.41ca65f8.css.map": "/static/css/main.41ca65f8.css.map",
+    "main.9f15746c.js.map": "/static/js/main.9f15746c.js.map",
+    "787.07238f48.chunk.js.map": "/static/js/787.07238f48.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.41ca65f8.css",
+    "static/js/main.9f15746c.js"
+  ]
+}

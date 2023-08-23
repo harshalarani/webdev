@@ -232,12 +232,11 @@ app.post("/api/profile", async (req, res) => {
   }
 });
 
+app.use(express.static("public"));
+
 // Start the server
 app.listen(8080, () => {
   console.log("Server started on http://localhost:8080");
 });
 
-app.get("/", function (req, res) {
-  res.end("Connected");
-  console.log("Server connected");
-});
+

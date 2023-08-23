@@ -91,7 +91,7 @@ const AcademicEvents = () => {
             eventDate={event.eventDate}
           />
         ))}
-
+</div>
     </div>
   );
 };
