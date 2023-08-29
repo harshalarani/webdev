@@ -1,5 +1,5 @@
 # Use the official Node.js image as the base image
-FROM node:16
+FROM node:18
 
 # Working directory inside the container
 WORKDIR /app
@@ -7,7 +7,7 @@ WORKDIR /app
 # Copy only package.json and package-lock.json to /app and install dependencies
 COPY package.json ./
 RUN npm cache clean --force
-RUN npm install
+RUN npm install --legacy-peer-deps
 
 # Copy the rest of the source code
 COPY . .
@@ -19,4 +19,4 @@ RUN npm run build
 EXPOSE 8080
 
 # Serve the built React app using a simple HTTP server like 'serve'
-CMD ["npx", "serve", "-s", "build"]
+CMD ["npm", "run", "server"]

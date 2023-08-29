@@ -91,11 +91,7 @@ const AcademicEvents = () => {
             eventDate={event.eventDate}
           />
         ))}
-<<<<<<< HEAD
 </div>
-=======
-      </div>
->>>>>>> 95472bef9458a7f0a9fb6eecb64d14e23b1a89f8
     </div>
   );
 };
