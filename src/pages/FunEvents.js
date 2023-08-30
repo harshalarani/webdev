@@ -14,22 +14,22 @@ const FunEvents = () => {
     {
       id: 1,
       posterUrl: posterImage,
-      eventTitle: "Event 1",
-      eventDescription: "Description for Event 1",
+      eventTitle: "Catch in the Rye",
+      eventDescription: "A lively game of skill and agility where players try to catch the 'Rye'",
       eventDate: "2023-12-30", // Add the event date here
     },
     {
       id: 2,
       posterUrl: posterImage,
-      eventTitle: "Event 2",
-      eventDescription: "Description for Event 2",
+      eventTitle: "Escape Room",
+      eventDescription: "Dive into an escape room adventure, collaborating to solve puzzles and beat the clock.",
       eventDate: "2023-11-15", // Add the event date here
     },
     {
       id: 3,
       posterUrl: posterImage,
-      eventTitle: "Event 3",
-      eventDescription: "Description for Event 3",
+      eventTitle: "Treasure Hunt",
+      eventDescription: "Embark on a thrilling treasure hunt, solving riddles to uncover hidden treasures.",
       eventDate: "2023-10-10", // Add the event date here
     },
     {
