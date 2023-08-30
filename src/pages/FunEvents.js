@@ -25,6 +25,7 @@ const FunEvents = () => {
       eventDescription: "Dive into an escape room adventure, collaborating to solve puzzles and beat the clock.",
       eventDate: "2023-11-15", // Add the event date here
     },
+    // This is demo
     {
       id: 3,
       posterUrl: posterImage,
